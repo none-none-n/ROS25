@@ -1,0 +1,5 @@
+rosrun study_pkg uc_pub.py
+rosrun study_pkg timer.py __ns:=controller1 even_numbers:=controller1/even_numbers
+rosrun study_pkg overflow_timer.py __ns:=controller1 overflow_signal:=controller1/overflow_signal
+rosrun study_pkg timer.py __name:=timer2 __ns:=controller2 even_numbers:=controller2/even_numbers
+rosrun study_pkg overflow_timer.py __name:=overflow_timer2 __ns:=controller2 overflow_signal:=controller2/overflow_signal
