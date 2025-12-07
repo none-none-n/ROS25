@@ -1,0 +1,43 @@
+## Команды rosparam
+
+- `rosparam help`  
+  Показать справку по утилите `rosparam`: какие есть подкоманды и что они делают.
+
+- `rosparam list`  
+  Вывести список всех параметров на сервере параметров (все имена с учётом namespace).
+
+- `rosparam get /rosdistro`  
+  Прочитать значение параметра `/rosdistro` (имя дистрибутива ROS, например `noetic`).
+
+- `rosparam set /my_param 'Hello =)'`  
+  Создать или изменить глобальный параметр `/my_param` со строковым значением `Hello =)`.
+
+- `rosparam set /my_set '{P: 10.0, I: 1.0, D: 0.1}'`  
+  Создать параметр `/my_set` как словарь (map) с полями `P`, `I`, `D` — тип YAML‑структуры.
+
+- `rosparam get /my_param`  
+  Прочитать значение параметра `/my_param` и вывести его в консоль.
+
+- `rosparam get /my_set`  
+  Прочитать весь словарь `/my_set` целиком.
+
+- `rosparam get /my_set/P`  
+  Прочитать только поле `P` внутри словаря `/my_set` (получится число `10.0`).
+
+## Сохранение и загрузка параметров
+
+- `rosparam dump -v /tmp/my_dump.yaml /`  
+  Сохранить *все* параметры, начиная с корневого пространства имён `/`, в файл `/tmp/my_dump.yaml`; флаг `-v` включает подробный вывод.
+
+- `rosparam load -v /tmp/my_dump.yaml /my_new_ns_just_to_make_it_long_for_control`  
+  Загрузить параметры из `/tmp/my_dump.yaml` в новое пространство имён `/my_new_ns_just_to_make_it_long_for_control`; текущие параметры там будут перезаписаны.
+
+- `rosparam dump -v /tmp/my_dump_special_ns.yaml /sample_ns`  
+  Сохранить только параметры из пространства имён `/sample_ns` в файл `/tmp/my_dump_special_ns.yaml`.
+
+- `rosparam load -v /tmp/my_dump_special_ns.yaml /new_ns_for_special`  
+  Загрузить параметры из файла `/tmp/my_dump_special_ns.yaml` в пространство имён `/new_ns_for_special`.
+
+- `rosparam delete -v /my_new_ns_just_to_make_it_long_for_control`  
+  Удалить целую «ветку» параметров, начинающуюся с `/my_new_ns_just_to_make_it_long_for_control` (всё под этим ns стирается).
+

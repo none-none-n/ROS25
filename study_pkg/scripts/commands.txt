@@ -1,0 +1,46 @@
+1. Запуск master:
+   - roscore
+
+2. Примеры talker/listener (в разных терминалах):
+   - rosrun rospy_tutorials talker
+   - rosrun rospy_tutorials listener
+
+3. Работа с узлами:
+   - rosnode list
+   - rosnode info /talker
+
+4. Работа с топиками:
+   - rostopic list
+   - rostopic list -v
+   - rostopic info /chatter
+   - rostopic echo /chatter
+   - rostopic echo /rosout
+   - rostopic hz /chatter
+
+5. Типы сообщений:
+   - rosmsg list
+   - rosmsg show std_msgs/String
+   - rosmsg show std_msgs/ColorRGBA
+   - rosmsg show geometry_msgs/Pose2D
+
+6. Граф связей:
+   - rqt_graph
+
+7. Права на свои скрипты:
+   - chmod +x talker.py
+   - chmod +x listener.py
+
+8. Запуск своих узлов (пример для пакета study_pkg):
+   - rosrun study_pkg talker.py
+   - rosrun study_pkg listener.py
+
+9. Переименование узла:
+   - rosrun rospy_tutorials listener __name:=listener
+
+10. Пространство имен узла:
+   - rosrun rospy_tutorials talker __ns:=new_ns
+   - rosrun rospy_tutorials listener __ns:=new_ns
+
+11. Remapping топиков:
+   - rosrun rospy_tutorials talker chatter:=chat
+   - rosrun rospy_tutorials listener chatter:=chat

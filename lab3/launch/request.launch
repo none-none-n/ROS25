@@ -1,0 +1,12 @@
+<launch>
+  <arg name="a" default="1.0"/>
+  <arg name="b" default="2.0"/>
+  <arg name="c" default="3.0"/>
+
+  <node
+    pkg="lab3"
+    type="request_node.py"
+    name="request"
+    output="screen"
+    args="$(arg a) $(arg b) $(arg c)"/>
+</launch>

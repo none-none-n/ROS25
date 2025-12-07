@@ -1,0 +1,14 @@
+<launch>
+  <rosparam
+    file="$(find lab3)/config/costmap_common.yaml"
+    command="load"
+    ns="global_costmap" />
+
+  <node
+    pkg="lab3"
+    type="my_node.py"
+    name="my_node"
+    output="screen">
+    <param name="publish_rate" value="10.0"/>
+  </node>
+</launch>
