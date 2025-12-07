@@ -1,0 +1,42 @@
+  <launch>
+    <!-- Симулятор -->
+    <node
+      pkg="turtlesim"
+      type="turtlesim_node"
+      name="simulator"
+      output="screen" />
+
+    <!-- Управление с клавиатуры -->
+    <node
+      pkg="turtlesim"
+      type="turtle_teleop_key"
+      name="keyboard"
+      output="screen" />
+
+    <!-- Наш TF broadcaster -->
+    <node
+      pkg="lab4"
+      type="turtle_tf_broadcaster.py"
+      name="turtle1_tf_broadcaster"
+      output="screen">
+      <!-- маппинг /input_pose -> /turtle1/pose -->
+      <remap from="input_pose" to="/turtle1/pose" />
+      <!-- приватный параметр имени TF-фрейма -->
+      <param name="turtle_tf_name" value="turtle1" />
+    </node>
+
+    <!-- статический TF turtle1 -> carrot -->
+    <node
+      pkg="tf"
+      type="static_transform_publisher"
+      name="turtle1_to_carrot_tf"
+      args="0.3 0 0 0 0 0 turtle1 carrot 100" />
+
+    <!-- RViz для просмотра TF -->
+    <node
+      pkg="rviz"
+      type="rviz"
+      name="rviz"
+      output="screen" />
+  </launch>
+  

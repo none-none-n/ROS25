@@ -1,0 +1,32 @@
+<launch>
+  <!-- Симулятор -->
+  <node
+    pkg="turtlesim"
+    type="turtlesim_node"
+    name="simulator"
+    output="screen" />
+
+  <!-- Управление первой черепахой -->
+  <node
+    pkg="turtlesim"
+    type="turtle_teleop_key"
+    name="keyboard"
+    output="screen" />
+
+  <!-- Наш broadcaster из пакета lab4 -->
+  <node
+    pkg="lab4"
+    type="turtle_tf_broadcaster_with_carrot.py"
+    name="turtle1_tf_broadcaster"
+    output="screen">
+    <remap from="input_pose" to="/turtle1/pose" />
+    <param name="turtle_tf_name" value="turtle1" />
+  </node>
+
+  <!-- RViz -->
+  <node
+    pkg="rviz"
+    type="rviz"
+    name="rviz"
+    output="screen" />
+</launch>
